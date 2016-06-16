@@ -1,0 +1,186 @@
+{
+    "id": "net.thorarin.better-time",
+    "name": {
+        "en": "Better Time"
+    },
+    "version": "0.0.1",
+    "compatibility": "0.x || 1.x",
+    "author": {
+        "name": "Marcel Veldhuizen",
+        "email": "marcel@subbot.net"
+    },
+    "permissions": [
+        "homey:manager:geolocation",
+        "homey:manager:speech-input",
+        "homey:manager:speech-output"
+    ],    
+    "flow": {
+        "conditions": [
+            {
+                "id": "time_between",
+                "title": {
+                    "en": "Time is !{{in|not}} between...",
+                    "nl": "Tijd is !{{tussen|niet tussen}}..."
+                },
+                "args": [
+                    {
+                        "name": "begin",
+                        "type": "time"
+                    },
+                    {
+                        "name": "end",
+                        "type": "time"
+                    }                    
+                ]
+            },
+            {
+                "id": "between_solar_events",
+                "title": {
+                    "en": "!{{It's|It isn't}} between solar events...",
+                    "nl": "Het is tussen zonnestanden..."
+                },
+                "args": [
+                    {
+                        "name": "beginEvent",
+                        "type": "dropdown",
+                        "values": [
+                            {
+                                "id": "sunrise",
+                                "label": {
+                                    "en": "Sunrise"
+                                }
+                            },
+                            {
+                                "id": "sunset",
+                                "label": {
+                                    "en": "Sunset"
+                                }
+                            }
+                        ], 
+                        "placeholder": {
+                            "en": "Begin event"
+                        }
+                    },
+                    {
+                        "name": "beginAdjustment",
+                        "type": "number",
+                        "placeholder": {
+                            "en": "Adjustment in minutes",
+                            "nl": "Aanpassing in minuten" 
+                        }
+                    },
+                    {
+                        "name": "endEvent",
+                        "type": "dropdown",
+                        "values": [
+                            {
+                                "id": "sunrise",
+                                "label": {
+                                    "en": "Sunrise"
+                                }
+                            },
+                            {
+                                "id": "sunset",
+                                "label": {
+                                    "en": "Sunset"
+                                }
+                            }
+                        ], 
+                        "placeholder": {
+                            "en": "End event"
+                        }
+                    },                    
+                    {
+                        "name": "endAdjustment",
+                        "type": "number",
+                        "placeholder": {
+                            "en": "Adjustment in minutes",
+                            "nl": "Aanpassing in minuten" 
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "daytime",
+                "title": {
+                    "en": "It !{{is|is not}} daytime"
+                },
+                "args": [
+                    {
+                        "name": "adjustBegin",
+                        "type": "number",
+                        "placeholder": {
+                            "en": "Adjustment in minutes",
+                            "nl": "Aanpassing in minuten" 
+                        }                        
+                    },
+                    {
+                        "name": "adjustEnd",
+                        "type": "number",
+                        "placeholder": {
+                            "en": "Adjustment in minutes",
+                            "nl": "Aanpassing in minuten" 
+                        }                        
+                    }                    
+                ]
+            },
+            {
+                "id": "time_before",
+                "title": {
+                    "en": "It is before"
+                },
+                "args": []
+            },
+            {
+                "id": "time_after",
+                "title": {
+                    "en": "It is after"
+                },
+                "args": []
+            }
+        ]
+    },
+    "speech": [
+        {
+            "id": "when",
+            "importance": 0.3,
+            "triggers": {
+                "en": [ "when will", "when did", "at what time" ]
+            }
+        },
+        {
+            "id": "sunset",
+            "importance": 0.5,
+            "triggers": {
+                "en": [ "sunset" ]
+            }
+        },
+        {
+            "id": "sun",
+            "importance": 0.3,
+            "triggers": {
+                "en": [ "sun" ]
+            }
+        },        
+        {
+            "id": "set",
+            "importance": 0.2,
+            "triggers": {
+                "en": [ "set" ]
+            }
+        },
+        {
+            "id": "rise",
+            "importance": 0.2,
+            "triggers": {
+                "en": [ "rise", "rises" ]
+            }
+        }          
+
+    ],
+    "speechExamples": [
+        {
+            "en": "When will the sun set today?"
+        }
+    ]
+}

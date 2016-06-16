@@ -1,0 +1,11 @@
+{
+    "today": "today",
+    "yesterday": "yesterday",
+    "tomorrow": "tomorrow",
+    "otherDate": "on MMM Do",
+    "sunrisePast": "__day__ the sun rose at __time__",
+    "sunriseFuture": "__day__ the sun will rise at __time__",
+    "sunsetPast": "__day__ the sun set at __time__",
+    "sunsetFuture": "__day__ the sun will set at __time__",
+    "timeFormat": "HH:mm"
+}
